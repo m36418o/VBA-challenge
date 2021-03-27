@@ -62,17 +62,18 @@ Sub StockAnalysis():
                     Cells(tablerow, 12).Value = volume 'Total trade volume
                 End If
                 
+                'Bonus conditionals for % increase/decrease
                 If Cells(tablerow, 11).Value > max Then
                     maxticker = Cells(tablerow, 9).Value
-                    max = Cells(tablerow, 11)
+                    max = Cells(tablerow, 11).Value
                 ElseIf Cells(tablerow, 11).Value < min Then
                     minticker = Cells(tablerow, 9).Value
-                    min = Cells(tablerow, 11)
+                    min = Cells(tablerow, 11).Value
                 End If
-                
+                'Bonus conditionals for max volume
                 If Cells(tablerow, 12).Value > total Then
                     tolticker = Cells(tablerow, 9).Value
-                    total = Cells(tablerow, 12)
+                    total = Cells(tablerow, 12).Value
                 End If
                 
                 'Conditional for styling and formating
@@ -83,6 +84,7 @@ Sub StockAnalysis():
                 ElseIf Cells(tablerow, 10).Value = 0 Then
                     Cells(tablerow, 10).Interior.ColorIndex = 0
                 End If
+                
                 Cells(tablerow, 11).Style = "percent" 'sets cell type to percentage
                 'Resetting variables
                 openprice = Cells(I + 1, 3)
